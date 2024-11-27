@@ -1,0 +1,57 @@
+[build-system]
+requires = [
+  "setuptools >= 40.9.0",
+  "wheel",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "panel-auth-credfile"
+version = "0.1.0"
+dependencies = [
+  "panel",
+  "python-jose",
+  "bcrypt"
+]
+
+[project.scripts]
+panel-auth-credfile = "panel_auth_credfile.cli:main"
+
+[project.entry-points."panel.auth"]
+credfile = "panel_auth_credfile.credfile_login_handler:CredfileLoginHandler"
+
+
+[tool.black]
+line-length = 99
+
+[tool.ruff]
+select = ["I", "F", "E"]
+line-length = 99
+fixable = ["I"]
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[tool.pylint]
+max-line-length = 120
+disable = [
+        "raw-checker-failed",
+        "bad-inline-option",
+        "locally-disabled",
+        "file-ignored",
+        "suppressed-message",
+        "useless-suppression",
+        "deprecated-pragma",
+        "use-symbolic-message-instead",
+        "missing-module-docstring",
+        "missing-class-docstring",
+        "missing-function-docstring",
+        "invalid-name",
+        "too-few-public-methods",
+        "too-many-instance-attributes",
+        "too-many-arguments",
+        "too-many-locals",
+        "broad-exception-caught",
+        "broad-exception-raised",
+        "import-outside-toplevel"
+    ]
